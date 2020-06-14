@@ -1,0 +1,47 @@
+.table-wrapper {
+  .table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+
+    tr {
+      width: 100%;
+
+      th, td {
+        padding: 10px 20px;
+        text-align: left;
+      }
+
+      th {
+        cursor: pointer;
+        border-bottom: 1px solid $gray;
+        padding: 20px;
+
+        &.active {
+          color: $linkColor;
+        }
+      }
+      &:hover {
+        td {
+          cursor: pointer;
+          background-color: $lightcolor;
+        }
+      }
+    }
+  }
+  &.empty {
+    &:after {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-sizing: border-box;
+      border-top: none;
+      content: "Aucune donnée disponible";
+      width: 100%;
+      height: 100px;
+      background-color: $lightgray;
+    }
+  }
+}

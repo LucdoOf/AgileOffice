@@ -1,0 +1,67 @@
+.button {
+  padding: 7px 10px;
+  border-radius: 5px;
+  transition: 200ms all ease;
+  display: inline-block;
+  &:not(.candy) {
+    cursor: pointer;
+  }
+  background-color: white;
+  border: 1px solid $gray;
+  color: black;
+  &:not(.candy):hover {
+    background-color: $lightblue;
+  }
+  &.cta {
+    background-color: $color;
+    border: 1px solid $colorhover;
+    color: white;
+    &:not(.candy):hover {
+      background-color: $colorhover;
+    }
+  }
+  &.green {
+    background-color: $green;
+    color: white;
+    border: 1px solid $darkgreen;
+    &:not(.candy):hover {
+      background-color: $darkgreen;
+    }
+  }
+  &.red {
+    background-color: $red;
+    color: white;
+    border: 1px solid $darkred;
+    &:not(.candy):hover {
+      background-color: $darkred;
+    }
+  }
+  &.yellow {
+    background-color: $yellow;
+    color: white;
+    border: 1px solid $darkyellow;
+    &:not(.candy):hover {
+      background-color: $darkyellow;
+    }
+  }
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  &:focus {
+    outline: 0 !important;
+  }
+}
+
+.button-group {
+  margin: 0 -10px;
+  &.center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .button {
+    margin: 0 10px;
+  }
+}

@@ -1,0 +1,31 @@
+.vue-notification-group {
+  position: fixed;
+  right: 0;
+  display: flex !important;
+  flex-direction: column !important;
+  height: min-content;
+  justify-content: flex-end !important;
+  padding: 20px;
+  box-sizing: border-box;
+  .vue-notification {
+    margin-top: 7px;
+    cursor: pointer;
+    background-color: $color;
+    border-color: $colorhover;
+    font-size: 15px;
+    max-width: none;
+    width: auto;
+    &.error {
+      background-color: $red;
+      border-color: $darkred;
+    }
+    &.success {
+      background-color: $green;
+      border-color: $darkgreen;
+    }
+    &.warning {
+      background-color: $yellow;
+      border-color: $darkyellow;
+    }
+  }
+}

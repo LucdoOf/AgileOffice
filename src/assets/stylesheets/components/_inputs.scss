@@ -1,0 +1,23 @@
+.radio {
+}
+
+input, textarea, select, [contenteditable="true"] {
+  &:focus {
+    outline: none;
+  }
+}
+
+.multiselect__content-wrapper {
+  transition: 400ms width ease;
+  .multiselect__option--highlight {
+    color: initial !important;
+    background: $lightblue !important;
+    &.multiselect__option--selected {
+      background: $lightred !important;
+    }
+  }
+  .multiselect__option--selected {
+    font-weight: initial !important;
+    background: $boxgray !important;
+  }
+}
