@@ -10,7 +10,7 @@ import { mapGetters } from 'vuex'
 
 Vue.config.productionTip = false
 
-Vue.use(VModal, { dynamic: true, dynamicDefaults: { clickToClose: true } })
+Vue.use(VModal, { dynamic: true, dynamicDefaults: { clickToClose: true }, dialog: true })
 Vue.use(Notifications)
 Vue.component('multiselect', Multiselect)
 

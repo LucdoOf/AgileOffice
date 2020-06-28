@@ -15,6 +15,11 @@ import GlobalStats from '../views/stats/GlobalStats'
 import CommandsStats from '../views/stats/CommandsStats'
 import ProductsStats from '../views/stats/ProductsStats'
 import UsersStats from '../views/stats/UsersStats'
+import CreateCommand from '../views/commands/CreateCommand'
+import CommandShipping from '../views/commands/CommandShipping'
+import Content from '../views/content/Content'
+import Page from '../views/content/Page'
+import Categories from '../views/products/Categories'
 
 Vue.use(VueRouter)
 
@@ -87,6 +92,33 @@ const routes = [
         path: 'stats/users',
         name: 'usersStats',
         component: UsersStats
+      },
+      {
+        path: 'commands/create',
+        name: 'createCommand',
+        component: CreateCommand
+      },
+      {
+        path: 'commands/:id/shipping',
+        name: 'commandShipping',
+        component: CommandShipping,
+        props: true
+      },
+      {
+        path: 'content',
+        name: 'content',
+        component: Content
+      },
+      {
+        path: 'content/pages/:id',
+        name: 'page',
+        component: Page,
+        props: true
+      },
+      {
+        path: 'products/categories',
+        name: 'categories',
+        component: Categories
       }
     ]
   },

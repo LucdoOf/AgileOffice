@@ -34,7 +34,7 @@ export default {
   name: 'Commands',
   components: { CommandStatusSelector, Table },
   methods: {
-    ...mapActions(['fetchPaginatedCommands']),
+    ...mapActions(['fetchPaginatedCommands', 'fetchUsers']),
     getFormatedCommands: function () {
       const formatedCommands = []
       const commands = this.getPaginatedCommands

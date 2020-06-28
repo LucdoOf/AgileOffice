@@ -4,7 +4,8 @@ const state = {
   allCommands: [],
   paginatedCommands: [],
   productCommands: [],
-  todayCommands: []
+  todayCommands: [],
+  monthCommands: []
 }
 
 const getters = {
@@ -12,6 +13,7 @@ const getters = {
   getPaginatedCommands: (state) => state.paginatedCommands,
   getProductCommands: (state) => state.productCommands,
   getTodayCommands: (state) => state.todayCommands,
+  getMonthCommands: (state) => state.monthCommands,
   getCommand (state) {
     return (id) => {
       return state.allCommands.find(command => command.id === id)
@@ -58,6 +60,26 @@ const actions = {
       }
     })
   },
+  fetchMonthCommands ({ commit }) {
+    return App.request('/stats/commands/month').then(response => {
+      console.log(response)
+      if (App.treatResponse(response)) {
+        commit('setMonthCommands', response.data)
+      }
+    })
+  },
+  createCommand ({ commit }, command) {
+    return App.request('/commands/create', 'put', command).then(response => {
+      App.treatResponse(response, 'Création de commande')
+      return response
+    })
+  },
+  deleteCommand ({ commit }, commandId) {
+    return App.request('/commands/' + commandId + '/delete', 'delete').then(response => {
+      App.treatResponse(response, 'Suppression de commande')
+      return response
+    })
+  },
   setCommands ({ commit }, commands) {
     commit('setCommands', commands)
   }
@@ -67,7 +89,8 @@ const mutations = {
   setCommands: (state, commands) => (state.allCommands = commands),
   setPaginatedCommands: (state, commands) => (state.paginatedCommands = commands),
   setProductCommands: (state, commands) => (state.productCommands = commands),
-  setTodayCommands: (state, commands) => (state.todayCommands = commands)
+  setTodayCommands: (state, commands) => (state.todayCommands = commands),
+  setMonthCommands: (state, commands) => (state.monthCommands = commands)
 }
 
 export default {

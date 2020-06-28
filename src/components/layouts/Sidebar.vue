@@ -7,6 +7,7 @@
         <li><router-link tag="a" class="link rw aw" to="/products"><i class="fas fa-tags r"/>Produits</router-link></li>
         <li><router-link tag="a" class="link rw aw" to="/users"><i class="fas fa-users r"/>Utilisateurs</router-link></li>
         <li><router-link tag="a" class="link rw aw" to="/stats"><i class="fas fa-chart-line r"/>Statistiques</router-link></li>
+        <li><router-link tag="a" class="link rw aw" to="/content"><i class="fas fa-font r"/>Contenu</router-link></li>
         <li><router-link tag="a" class="link rw aw" to="/settings"><i class="fas fa-cogs r"/>Paramètres</router-link></li>
       </ul>
     </nav>

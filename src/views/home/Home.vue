@@ -3,7 +3,7 @@
     <div class="row" id="main-numbers">
       <OnlineUsers class="w-s4"/>
       <TodayVisits class="w-s4"/>
-      <TodayTurnover class="w-s4"/>
+      <DurationTurnover class="w-s4"/>
     </div>
     <div class="row">
       <div class="w-s6 box">
@@ -18,26 +18,20 @@
 <script>
 
 import OnlineUsers from '../../components/home/OnlineUsers'
-import { mapActions } from 'vuex'
 import TodayVisits from '../../components/home/TodayVisits'
-import TodayTurnover from '../../components/home/TodayTurnover'
 import Chart from '../../components/Chart'
 import TurnoverChart from '../../components/stats/TurnoverChart'
+import store from '../../store'
+import DurationTurnover from '../../components/stats/DurationTurnover'
 
 export default {
   name: 'Home',
   components: {
+    DurationTurnover,
     TurnoverChart,
     Chart,
-    TodayTurnover,
     TodayVisits,
     OnlineUsers
-  },
-  methods: {
-    ...mapActions(['fetchCommands'])
-  },
-  created () {
-    this.fetchCommands()
   },
   computed: {
     productsChartData () {
@@ -64,6 +58,13 @@ export default {
       }
       return chartData
     }
+  },
+  beforeRouteEnter (to, from, next) {
+    store.dispatch('fetchCommands').finally(() => {
+      store.dispatch('fetchTodayCommands').finally(() => {
+        next()
+      })
+    })
   }
 }
 

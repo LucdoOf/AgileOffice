@@ -54,7 +54,6 @@ export default {
     this.options.legend.show = this.showLegend
     this.options.labels = this.labels
     this.options.dataLabels = this.dataLabels
-    console.log(this.options)
   },
   data: () => {
     return {

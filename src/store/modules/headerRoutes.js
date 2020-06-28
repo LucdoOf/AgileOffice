@@ -12,19 +12,32 @@ const state = {
         display: 'Récentes'
       },
       {
+        name: 'createCommand',
+        display: 'Créer une commande'
+      },
+      {
         name: 'command',
         display (params) {
           const command = this.$store.getters.getCommand(params.id)
           if (!command) return false
           else return command.reference
         },
-        allowedRoutes: ['command']
+        allowedRoutes: ['command', 'commandShipping']
+      },
+      {
+        name: 'commandShipping',
+        display: 'Livraison',
+        allowedRoutes: ['command', 'commandShipping']
       }
     ],
     products: [
       {
         display: 'Tout les produits',
         name: 'products'
+      },
+      {
+        name: 'categories',
+        display: 'Catégories'
       },
       {
         name: 'product',
@@ -72,6 +85,21 @@ const state = {
       {
         display: 'Utilisateurs',
         name: 'usersStats'
+      }
+    ],
+    content: [
+      {
+        display: 'Contenu global',
+        name: 'content'
+      },
+      {
+        name: 'page',
+        display (params) {
+          const page = this.$store.getters.getPage(params.id)
+          if (!page) return false
+          else return page.name
+        },
+        allowedRoutes: ['page']
       }
     ]
   }

@@ -12,6 +12,10 @@
         <div class="label">Date d'achat</div>
         <div class="value">Le {{ this.$app.formatDate(command.order_date_stamp) }}</div>
       </div>
+      <div class="field">
+        <div class="label">Facture</div>
+        <div class="value"><a :href="command.invoice_pdf" class='link' target="_blank">{{ command.invoice_pdf }}</a></div>
+      </div>
     </div>
   </div>
 </template>

@@ -13,10 +13,17 @@
         </div>
       </div>
     </div>
+    <div class="box-footer">
+      <div class="button-group">
+        <a class="button red" @click="this.onDelete">Supprimer la commande</a>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'CommandStatus',
   props: ['command'],
@@ -24,6 +31,32 @@ export default {
     return {
       status: 'draft',
       dontTriggerWatch: true
+    }
+  },
+  methods: {
+    ...mapActions(['deleteCommand']),
+    onDelete () {
+      this.$modal.show('dialog', {
+        title: 'Supprimer la commande',
+        text: 'Êtes-vous sur ? Cette action est irreversible, si vous souhaitez simplement annuler la commande, changez son status.',
+        buttons: [
+          {
+            title: 'Supprimer la commande',
+            handler: () => {
+              this.deleteCommand(this.command.id).then(response => {
+                this.$modal.hide('dialog')
+                if (response.status === 200) this.$router.push('/commands')
+              })
+            },
+            class: 'button red'
+          },
+          {
+            title: 'Annuler',
+            default: true,
+            class: 'button'
+          }
+        ]
+      })
     }
   },
   created () {

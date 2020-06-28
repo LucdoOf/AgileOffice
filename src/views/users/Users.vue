@@ -38,9 +38,9 @@ export default {
         if (user) {
           user.name = user.lastname + ' ' + user.firstname
           user.last_seen_value = user.last_seen_stamp
-          user.last_seen = this.$app.formatDate(user.last_seen_stamp)
+          user.last_seen = user.last_seen ? this.$app.formatDate(user.last_seen_stamp) : '&mdash;'
           user.inscription_date_value = user.inscription_date_stamp
-          user.inscription_date = this.$app.formatDate(user.inscription_date_stamp)
+          user.inscription_date = user.inscription_date ? this.$app.formatDate(user.inscription_date_stamp) : '&mdash;'
           formatedUsers.push(user)
         }
       }

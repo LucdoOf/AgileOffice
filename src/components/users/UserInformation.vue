@@ -16,7 +16,7 @@
       </div>
       <div class="field">
         <div class="label">Dernière connection</div>
-        <div class="value">Le {{ this.$app.formatDate(this.user.last_seen_stamp) }}</div>
+        <div class="value">{{ this.user.last_seen ? 'Le ' + this.$app.formatDate(this.user.last_seen_stamp) : '&mdash;' }}</div>
       </div>
       <div class="field">
         <div class="label">Date d'inscription</div>

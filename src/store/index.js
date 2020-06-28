@@ -6,6 +6,7 @@ import products from './modules/products'
 import baskets from './modules/baskets'
 import basketEntries from './modules/basketEntries'
 import users from './modules/users'
+import pages from './modules/pages'
 
 Vue.use(Vuex)
 
@@ -22,7 +23,8 @@ const store = new Vuex.Store({
     products,
     baskets,
     basketEntries,
-    users
+    users,
+    pages
   }
 })
 

@@ -19,6 +19,10 @@
         <div class="value"><input type="text" v-model="price"></div>
       </div>
       <div class="field">
+        <div class="label">Catégorie</div>
+        <div class="value"><CategorySelector :initial-category="product.category"/></div>
+      </div>
+      <div class="field">
         <div class="label">Boosté</div>
         <div class="value"><input type="checkbox" v-model="boosted"></div>
       </div>
@@ -39,9 +43,11 @@
 <script>
 
 import router from '../../router'
+import CategorySelector from './CategorySelector'
 
 export default {
   name: 'EditProduct',
+  components: { CategorySelector },
   props: ['product'],
   data: () => {
     return {
@@ -56,7 +62,6 @@ export default {
   methods: {
     save () {
       this.$app.request('/products/' + this.product.id + '/update', 'post', this.$data).then(response => {
-        router.push({ name: 'products' })
         this.$app.treatResponse(response, 'Produit ' + this.product.reference)
       })
     }

@@ -3,6 +3,7 @@
   border-radius: 5px;
   transition: 200ms all ease;
   display: inline-block;
+  white-space: nowrap;
   &:not(.candy) {
     cursor: pointer;
   }
@@ -55,13 +56,17 @@
 
 .button-group {
   margin: 0 -10px;
+  width: calc(100% + 20px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   &.center {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: center;
   }
-  .button {
+  &.end {
+    justify-content: flex-end;
+  }
+  .button,.link {
     margin: 0 10px;
   }
 }

@@ -3,7 +3,9 @@
     <Sidebar/>
     <div id="middle">
       <Header/>
-      <router-view id="content"/>
+      <transition name="slide" mode="out-in">
+        <router-view id="content"/>
+      </transition>
       <notifications group="notifications" position="bottom right"/>
       <modals-container/>
     </div>

@@ -32,10 +32,12 @@ i {
   &.l {
     margin-left: 1em;
   }
+  &.green {
+    color: $green;
+  }
 }
 
 .box {
-  box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.08) , 0 3px 6px 0 rgba(0,0,0, 0.12);
   border-radius: 5px;
   height: min-content;
   overflow: visible;
@@ -58,17 +60,25 @@ i {
     padding: 20px;
     background-color: white;
     border-bottom: 1px solid $gray;
+    box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.08) , 0 3px 6px 0 rgba(0,0,0, 0.12);
     .title {
       font-size: 1.5rem;
       text-align: left;
     }
     .box-actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
       a {
+        margin-left: 20px;
         font-size: 1.2rem;
       }
     }
   }
   .box-content {
+    background-color: white;
+    box-sizing: border-box;
+    box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.08) , 0 3px 6px 0 rgba(0,0,0, 0.12);
     .box-header {
       display: flex;
       flex-direction: column;
@@ -80,8 +90,6 @@ i {
         text-align: left;
       }
     }
-    background-color: white;
-    box-sizing: border-box;
     &.gray {
       background-color: $boxgray;
     }
@@ -89,6 +97,17 @@ i {
       display: block;
       font-size: 1.2rem;
       margin: 10px 0;
+      text-align: center;
+    }
+  }
+  .box-content-group {
+    display: flex;
+    flex-direction: column;
+    .box-content:not(:last-child) {
+        border-bottom: 1px solid $gray;
+    }
+    .box-content {
+      box-shadow: unset !important;
     }
   }
   .box-footer {
@@ -96,6 +115,13 @@ i {
     padding: 25px 20px;
     background-color: $boxgray;
     text-align: right;
+    box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.08) , 0 3px 6px 0 rgba(0,0,0, 0.12);
+  }
+
+  .box-top-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 }
 
@@ -125,10 +151,16 @@ i {
     &.xl {
       font-size: 1.7rem;
     }
-    textarea, input {
+    textarea, input, .multiselect {
       &:not([type="radio"]){
         width: 100%;
       }
+    }
+  }
+  &.min {
+    justify-content: start;
+    .value, .label {
+      flex: unset;
     }
   }
   &:not(:last-child) {
@@ -144,4 +176,12 @@ i {
     padding-bottom: 0;
     border-bottom: none;
   }
+}
+
+.hidden {
+  display: none;
+}
+
+.clickable {
+  cursor: pointer;
 }

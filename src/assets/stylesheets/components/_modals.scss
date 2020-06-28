@@ -3,4 +3,17 @@
   height: auto !important;
   top: 50% !important;
   transform: translateY(-50%);
+  overflow: visible;
+
+  &.vue-dialog {
+    .dialog-content {
+      padding: 0;
+    }
+    .vue-dialog-buttons {
+      margin-top: 15px;
+      border-top: none;
+      @extend .button-group;
+      justify-content: space-between;
+    }
+  }
 }

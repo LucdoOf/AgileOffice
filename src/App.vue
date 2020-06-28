@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
     <notifications group="notifications" position="bottom right"/>
     <modals-container/>
+    <v-dialog />
   </div>
 </template>
 
@@ -26,5 +29,31 @@ html, body {
   align-items: center;
   justify-content: center;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition-duration: 0.25s;
+  transition-property: opacity, transform;
+  transition-timing-function: ease;
+}
+
+.slide-enter,
+.slide-leave-active {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
 </style>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

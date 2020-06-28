@@ -10,7 +10,8 @@ const App = Object.freeze({
     const connectedUser = store.getters.getConnectedUser
     const buffer = connectedUser ? Buffer.from(connectedUser.name + ':' + connectedUser.password) : null
     const config = {
-      url: 'http://localhost/Agile-Install/api' + url,
+      url: 'http://localhost/Agile-Installations/Demo/share' +
+        '/api' + url,
       method: method,
       validateStatus: function (status) {
         return status < 500
@@ -60,6 +61,23 @@ const App = Object.freeze({
         date.setSeconds(0)
         date.setMilliseconds(0)
         date = date.getTime()
+        if (!perDayData[date]) perDayData[date] = 0
+        perDayData[date] = parseFloat(perDayData[date]) + parseFloat(actualData[dataKey])
+      }
+    }
+    return perDayData
+  },
+  aggregateByWeekDay: function (data, dateKey, dataKey, humanReadable = false) {
+    const perDayData = {}
+    for (let i = 0; i < data.length; i++) {
+      const actualData = data[i]
+      if (actualData) {
+        let date = ((new Date(actualData[dateKey])))
+        if (humanReadable) {
+          date = DateFormat(date, 'dddd')
+        } else {
+          date = date.getDay()
+        }
         if (!perDayData[date]) perDayData[date] = 0
         perDayData[date] = parseFloat(perDayData[date]) + parseFloat(actualData[dataKey])
       }

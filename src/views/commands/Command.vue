@@ -4,7 +4,7 @@
       <BasketInformation :basket="this.basket" class="w-s12">Panier lié</BasketInformation>
     </div>
     <div class="row">
-      <div class="w-s10">
+      <div class="w-s8">
         <div class="row">
           <CommandInformation :command="this.command" class="w-s12 wr"/>
         </div>
@@ -12,7 +12,14 @@
           <CommandHistory ref="history" :command="this.command" class="w-s12 wr"/>
         </div>
       </div>
-      <CommandStatus @update='$refs.history.updateHistory()' :command="this.command" class="w-s4"/>
+      <div class="w-s4">
+        <div class="row">
+          <CommandStatus @update='$refs.history.updateHistory()' :command="this.command" class="w-s12 wr"/>
+        </div>
+        <div class="row">
+          <Address :address="this.command.billing_address" class="w-s12 wr">Adresse de facturation</Address>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -23,10 +30,11 @@ import CommandInformation from '../../components/commands/CommandInformation'
 import BasketInformation from '../../components/baskets/BasketInformation'
 import CommandStatus from '../../components/commands/CommandStatus'
 import CommandHistory from '../../components/commands/CommandHistory'
+import Address from '../../components/users/Address'
 
 export default {
   name: 'Command',
-  components: { CommandHistory, CommandStatus, BasketInformation, CommandInformation },
+  components: { Address, CommandHistory, CommandStatus, BasketInformation, CommandInformation },
   props: ['id'],
   computed: {
     command () {
