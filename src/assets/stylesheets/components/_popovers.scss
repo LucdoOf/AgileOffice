@@ -1,0 +1,56 @@
+.popover {
+  position: relative;
+  cursor: help;
+  .popover-container {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    top: 30px;
+    text-align: center;
+    color: $darkgray;
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid $lightcolor;
+    }
+  }
+  &:hover {
+    .popover-container {
+      display: block;
+      opacity: 1;
+      animation: 500ms popoverIn;
+      z-index: 5;
+      box-sizing: border-box;
+      white-space: normal;
+      background-color: $lightcolor;
+      padding: 20px;
+      width: 400px;
+      font-family: 'Open-Sans', sans-serif;
+      font-weight: normal;
+      left: 50%;
+      font-size: initial;
+      transform: scale(1) translateX(-50%);
+      box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.08) , 0 3px 6px 0 rgba(0,0,0, 0.12);
+    }
+  }
+}
+
+@keyframes popoverIn {
+  0% {
+    transform: scale(0) translateX(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateX(-50%);
+    opacity: 1;
+  }
+
+}
