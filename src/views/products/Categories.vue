@@ -13,7 +13,7 @@
     <div class="row">
       <Table class="w-s12"
              ref='table'
-             v-bind:columns="{'slug':'Slug','name':'Nom','parent':'Catégorie parente','created_at':'Date de création'}"
+             v-bind:columns="{'slug':'Slug','name':'Nom','parent':'Catégorie parente','created_at':'Date de création','product_count':'Produits rattachés'}"
              v-bind:table-data="this.getFormatedCategories()"
              @row-click="(row) => this.$router.push({ name: 'category', params: { id: row.id } })"/>
     </div>
@@ -42,7 +42,8 @@ export default {
           name: category.name,
           parent: category.parent ? category.parent.name + ' (' + category.parent.slug + ')' : '&mdash;',
           created_at: this.$app.formatDate(category.created_at_stamp),
-          created_at_value: category.created_at_stamp
+          created_at_value: category.created_at_stamp,
+          product_count: this.getProducts.filter(product => product.category_id === category.id).length
         })
       })
       return formatedCategories

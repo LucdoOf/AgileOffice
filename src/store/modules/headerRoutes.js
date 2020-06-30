@@ -40,6 +40,15 @@ const state = {
         display: 'Catégories'
       },
       {
+        name: 'category',
+        display (params) {
+          const category = this.$store.getters.getCategory(params.id)
+          if (!category) return false
+          else return category.name
+        },
+        allowedRoutes: ['category']
+      },
+      {
         name: 'product',
         display (params) {
           const product = this.$store.getters.getProduct(params.id)

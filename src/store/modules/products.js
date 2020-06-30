@@ -12,7 +12,12 @@ const getters = {
       return state.products.find(product => parseInt(product.id) === parseInt(id))
     }
   },
-  getCategories: (state) => state.categories
+  getCategories: (state) => state.categories,
+  getCategory (state) {
+    return (id) => {
+      return state.categories.find(category => parseInt(category.id) === parseInt(id))
+    }
+  }
 }
 
 const actions = {

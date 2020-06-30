@@ -6,7 +6,7 @@
     <div class="box-content">
       <div class="field-group">
         <div class="field command-status-field" v-for="field in this.$app.allCommandsStatus()" :key="field.value" :class="{ active: status === field.value }">
-          <div class="label nowrap"><label :style="'color: ' + field.color" :for="'command-status-' + field.value"><i :class="field.icon" class="r"/> {{ field.label }}</label></div>
+          <div class="label" :style="'color: ' + field.color" :for="'command-status-' + field.value"><i :class="field.icon" class="r"/> {{ field.label }}</div>
           <div class="value">
             <input type="radio" class="radio" v-model="status" :id="'command-status-' + field.value" name="status" :value="field.value"/>
           </div>
@@ -84,10 +84,10 @@ export default {
 
 <style lang="scss">
   .command-status-field {
-    &:not(.active):not(:hover) label {
+    &:not(.active):not(:hover) .label {
       color: $darkgray !important;
     }
-    label {
+    .label {
       transition: 400ms all ease;
       cursor: pointer;
     }

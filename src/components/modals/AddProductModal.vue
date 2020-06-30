@@ -13,6 +13,12 @@
       </div>
     </div>
     <div class="field">
+      <div class="label">Catégorie</div>
+      <div class="value">
+        <CategorySelector ref="selector"/>
+      </div>
+    </div>
+    <div class="field">
       <div class="label">Stock initial</div>
       <div class="value">
         <input type="number" class="input" placeholder="200" v-model="stock">
@@ -25,9 +31,11 @@
 <script>
 
 import { mapActions } from 'vuex'
+import CategorySelector from '../products/CategorySelector'
 
 export default {
   name: 'AddProductModal',
+  components: { CategorySelector },
   data: () => {
     return {
       name: '',
@@ -38,7 +46,9 @@ export default {
   methods: {
     ...mapActions(['fetchProducts']),
     addProduct: function () {
-      this.$app.request('/products/create', 'put', this.$data).then(response => {
+      const toSend = Object.assign({}, this.$data)
+      toSend.category_id = this.$refs.selector.category ? this.$refs.selector.category.id : null
+      this.$app.request('/products/create', 'put', toSend).then(response => {
         this.$emit('close')
         this.$app.treatResponse(response, 'Création de produit')
         this.fetchProducts()

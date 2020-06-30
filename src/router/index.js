@@ -20,6 +20,7 @@ import CommandShipping from '../views/commands/CommandShipping'
 import Content from '../views/content/Content'
 import Page from '../views/content/Page'
 import Categories from '../views/products/Categories'
+import Category from '../views/products/Category'
 
 Vue.use(VueRouter)
 
@@ -119,6 +120,12 @@ const routes = [
         path: 'products/categories',
         name: 'categories',
         component: Categories
+      },
+      {
+        path: 'products/categories/:id',
+        name: 'category',
+        component: Category,
+        props: true
       }
     ]
   },

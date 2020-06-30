@@ -147,13 +147,23 @@ i {
   .value {
     flex: 50% 0 1;
     text-align: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
     font-size: 1.2rem;
     &.xl {
       font-size: 1.7rem;
     }
     textarea, input, .multiselect {
-      &:not([type="radio"]){
+      &:not([type="radio"]):not([type='checkbox']){
         width: 100%;
+        width: -moz-available;          /* For Mozzila */
+        width: -webkit-fill-available;  /* For Chrome */
+        width: stretch;                 /* Unprefixed */
+      }
+      &[type='checkbox'], &[type='radio'] {
+        margin: 5px 0;
       }
     }
   }
@@ -183,5 +193,6 @@ i {
 }
 
 .clickable {
+  @extend .link;
   cursor: pointer;
 }

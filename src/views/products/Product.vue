@@ -34,7 +34,9 @@ export default {
     store.dispatch('fetchProducts').finally(() => {
       store.dispatch('fetchCommands').finally(() => {
         store.dispatch('fetchBasketEntries').finally(() => {
-          next()
+          store.dispatch('fetchCategories').finally(() => {
+            next()
+          })
         })
       })
     })

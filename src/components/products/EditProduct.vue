@@ -20,7 +20,10 @@
       </div>
       <div class="field">
         <div class="label">Catégorie</div>
-        <div class="value"><CategorySelector :initial-category="product.category"/></div>
+        <div class="value">
+          <CategorySelector ref='selector' :initial-category="product.category"/>
+          <i v-if="product.category" @click="$router.push({ name: 'category', params: { id: product.category.id }})" class="clickable fas fa-sign-out-alt l"/>
+        </div>
       </div>
       <div class="field">
         <div class="label">Boosté</div>
@@ -42,7 +45,6 @@
 
 <script>
 
-import router from '../../router'
 import CategorySelector from './CategorySelector'
 
 export default {
@@ -61,7 +63,9 @@ export default {
   },
   methods: {
     save () {
-      this.$app.request('/products/' + this.product.id + '/update', 'post', this.$data).then(response => {
+      const toSend = Object.assign({}, this.$data)
+      toSend.category_id = this.$refs.selector.category ? this.$refs.selector.category.id : null
+      this.$app.request('/products/' + this.product.id + '/update', 'post', toSend).then(response => {
         this.$app.treatResponse(response, 'Produit ' + this.product.reference)
       })
     }
