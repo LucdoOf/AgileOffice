@@ -17,9 +17,19 @@
       />
     </div>
     <div class="box-footer">
-      <div class="field">
-        <div class="label">Montant du panier TTC</div>
-        <div class="value xl">{{ this.$app.parseDecimal(this.basketPrice) }} €</div>
+      <div class="field-group">
+        <div class="field">
+          <div class="label">Montant du panier TTC</div>
+          <div class="value">{{ this.$app.parseDecimal(this.basketPrice) }} €</div>
+        </div>
+        <div class="field">
+          <div class="label">Frais de livraison</div>
+          <div class="value">{{ this.$app.parseDecimal(this.command.shipping_fees) }} €</div>
+        </div>
+        <div class="field">
+          <div class="label">Total TTC</div>
+          <div class="value xl">{{ this.$app.parseDecimal(this.basketPrice + parseFloat(this.command.shipping_fees)) }} €</div>
+        </div>
       </div>
     </div>
   </div>
@@ -28,9 +38,9 @@
 <script>
 import Table from '../Table'
 export default {
-  name: 'BasketInformation',
+  name: 'CommandBasketInformation',
   components: { Table },
-  props: ['basket'],
+  props: ['basket', 'command'],
   methods: {
     getFormatedEntries () {
       const entries = this.getBasketEntries(this.basket.id)

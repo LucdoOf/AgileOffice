@@ -19,7 +19,7 @@ const getters = {
 
 const actions = {
   fetchPaginatedUsers ({ commit }, { page, filters, sort }) {
-    return App.request('/users/page/' + page, 'post', { filters: filters, sort: sort }).then(response => {
+    return App.request('/users/page/' + page, 'GET', { filters: filters, sort: sort }).then(response => {
       if (App.treatResponse(response)) {
         commit('setPaginatedUsers', response.data)
       }

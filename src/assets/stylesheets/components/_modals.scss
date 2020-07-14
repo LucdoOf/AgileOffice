@@ -3,7 +3,7 @@
   height: auto !important;
   top: 50% !important;
   transform: translateY(-50%);
-  overflow: visible;
+  overflow: visible !important;
 
   &.vue-dialog {
     .dialog-content {

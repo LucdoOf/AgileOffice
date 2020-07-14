@@ -8,6 +8,9 @@
         <ProductCommandsChart :product="this.product" :height="chartHeight"/>
       </div>
     </div>
+    <div class="row">
+      <ProductMedias class="w-s6" :product="this.product"/>
+    </div>
   </div>
 </template>
 
@@ -17,10 +20,11 @@ import { mapActions } from 'vuex'
 import EditProduct from '../../components/products/EditProduct'
 import store from '../../store/index'
 import ProductCommandsChart from '../../components/products/ProductCommandsChart'
+import ProductMedias from '../../components/products/ProductMedias'
 
 export default {
   name: 'Product',
-  components: { ProductCommandsChart, EditProduct },
+  components: { ProductMedias, ProductCommandsChart, EditProduct },
   methods: {
     ...mapActions(['fetchProducts'])
   },

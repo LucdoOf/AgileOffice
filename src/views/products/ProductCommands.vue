@@ -17,6 +17,7 @@ import store from '../../store'
 import ProductCommandsTable from '../../components/products/ProductCommandsTable'
 
 export default {
+  name: 'ProductCommands',
   components: { ProductCommandsTable },
   beforeRouteEnter (to, from, next) {
     store.dispatch('fetchProducts').finally(() => {

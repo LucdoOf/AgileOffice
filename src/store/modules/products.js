@@ -17,6 +17,16 @@ const getters = {
     return (id) => {
       return state.categories.find(category => parseInt(category.id) === parseInt(id))
     }
+  },
+  getCategoryLinkedProducts (state) {
+    return (categoryId) => {
+      return state.products.filter(product => {
+        if (product.category) {
+          return product.category.root.id === categoryId || product.category.id === categoryId
+        }
+        return false
+      })
+    }
   }
 }
 

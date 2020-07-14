@@ -1,9 +1,13 @@
 <template>
   <div id="header" class="rw aw">
-    <nav class="rw aw">
+    <nav class="rw aw jws">
       <ul>
         <li v-for="route in this.actualRoutes" v-bind:key="route.display"><router-link class="link" v-bind:to="route.to">{{ route.display }}</router-link></li>
       </ul>
+      <div class="connected-user">
+        <span class="link" v-if="this.getConnectedUser !== null"><i class="fas fa-user r"/>{{ this.getConnectedUser.name }}</span>
+        <router-link class="link" v-else to="/login"><i class="fas fa-user r"/>Invité</router-link>
+      </div>
     </nav>
   </div>
 </template>
@@ -66,25 +70,26 @@ export default {
 
   nav {
     height: 100%;
+    width: 100%;
     ul {
       height: 100%;
       display: flex;
       flex-direction: row;
       li{
         height: 100%;
-        .link {
-          font-size: 1.2em;
-          color: white;
-          display: block;
-          height: 100%;
-          transition: 200ms background-color ease;
-          line-height: 60px;
-          padding: 0 30px;
-          &:hover, &.router-link-exact-active {
-            background-color: $colorhover;
-            text-decoration: none;
-          }
-        }
+      }
+    }
+    .link {
+      font-size: 1.2em;
+      color: white;
+      display: block;
+      height: 100%;
+      transition: 200ms background-color ease;
+      line-height: 60px;
+      padding: 0 30px;
+      &:hover, &.router-link-exact-active {
+        background-color: $colorhover;
+        text-decoration: none;
       }
     }
   }

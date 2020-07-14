@@ -24,7 +24,11 @@
   justify-content: center;
 }
 
-i {
+.jws {
+  justify-content: space-between;
+}
+
+i, .badge {
   display: inline;
   &.r {
     margin-right: 1em;
@@ -127,9 +131,6 @@ i {
 
 .field {
   display: flex;
-  &.vertical {
-    flex-direction: column;
-  }
   &:not(.vertical){
     flex-direction: row;
     align-items: center;
@@ -140,6 +141,7 @@ i {
     color: $darkgray;
     flex: 50% 0 1;
     text-align: left;
+    margin-right: 30px;
     &.nowrap {
       white-space: nowrap;
     }
@@ -149,7 +151,7 @@ i {
     text-align: right;
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     font-size: 1.2rem;
     &.xl {
@@ -167,13 +169,28 @@ i {
       }
     }
   }
+  &.vertical {
+    flex-direction: column;
+    justify-content: space-between;
+    width: min-content;
+    .label {
+      margin-right: 0;
+      margin-bottom: 30px;
+      flex: auto;
+      text-align: left;
+    }
+    .value {
+      flex: auto;
+      text-align: center;
+    }
+  }
   &.min {
-    justify-content: start;
+    justify-content: flex-start;
     .value, .label {
       flex: unset;
     }
   }
-  &:not(:last-child) {
+  &:not(:last-child):not(.vertical) {
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid $gray;
@@ -181,10 +198,22 @@ i {
 }
 
 .field-group {
-  .field:not(:last-child) {
-    margin-bottom: 10px;
-    padding-bottom: 0;
-    border-bottom: none;
+  &:not(.horizontal) {
+    .field:not(:last-child) {
+      margin-bottom: 10px;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+  &.horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    .field:not(:last-child) {
+      margin-right: 30px;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
   }
 }
 

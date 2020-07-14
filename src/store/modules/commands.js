@@ -40,14 +40,14 @@ const actions = {
     })
   },
   fetchPaginatedCommands ({ commit }, { page, filters, sort }) {
-    return App.request('/commands/page/' + page, 'post', { filters: filters, sort: sort }).then(response => {
+    return App.request('/commands/page/' + page, 'get', { filters: filters, sort: sort }).then(response => {
       if (App.treatResponse(response)) {
         commit('setPaginatedCommands', response.data)
       }
     })
   },
   fetchProductCommands ({ commit }, { productId, page, filters, sort }) {
-    return App.request('/products/' + productId + '/commands/page/' + page, 'post', { filters: filters, sort: sort }).then(response => {
+    return App.request('/products/' + productId + '/commands/page/' + page, 'get', { filters: filters, sort: sort }).then(response => {
       if (App.treatResponse(response)) {
         commit('setProductCommands', response.data)
       }

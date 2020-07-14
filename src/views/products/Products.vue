@@ -28,7 +28,7 @@ export default {
   name: 'Products',
   components: { Table },
   methods: {
-    ...mapActions(['fetchProducts']),
+    ...mapActions(['fetchProducts', 'fetchCategories']),
     addProduct () {
       this.$modal.show(AddProductModal)
     },
@@ -50,6 +50,7 @@ export default {
   },
   created () {
     this.fetchProducts()
+    this.fetchCategories()
   }
 }
 </script>

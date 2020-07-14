@@ -43,7 +43,7 @@ export default {
           parent: category.parent ? category.parent.name + ' (' + category.parent.slug + ')' : '&mdash;',
           created_at: this.$app.formatDate(category.created_at_stamp),
           created_at_value: category.created_at_stamp,
-          product_count: this.getProducts.filter(product => product.category_id === category.id).length
+          product_count: this.getCategoryLinkedProducts(category.id).length
         })
       })
       return formatedCategories

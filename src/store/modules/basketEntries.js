@@ -19,6 +19,16 @@ const getters = {
     return (productId) => {
       return state.basketEntries.filter(basketEntry => parseInt(basketEntry.product_id) === parseInt(productId))
     }
+  },
+  getBasketEntriesContainingCategory: (state) => {
+    return (categoryId) => {
+      return state.basketEntries.filter(basketEntry => {
+        if (basketEntry.product.category) {
+          return parseInt(basketEntry.product.category.id) === parseInt(categoryId) || parseInt(basketEntry.product.category.root.id) === parseInt(categoryId)
+        }
+        return false
+      })
+    }
   }
 }
 

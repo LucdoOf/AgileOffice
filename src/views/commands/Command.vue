@@ -1,7 +1,7 @@
 <template>
   <div id="command">
     <div class="row">
-      <BasketInformation :basket="this.basket" class="w-s12">Panier lié</BasketInformation>
+      <BasketInformation :command="this.command" :basket="this.basket" class="w-s12">Panier lié</BasketInformation>
     </div>
     <div class="row">
       <div class="w-s8">
@@ -27,7 +27,7 @@
 <script>
 import store from '../../store'
 import CommandInformation from '../../components/commands/CommandInformation'
-import BasketInformation from '../../components/baskets/BasketInformation'
+import BasketInformation from '../../components/baskets/CommandBasketInformation'
 import CommandStatus from '../../components/commands/CommandStatus'
 import CommandHistory from '../../components/commands/CommandHistory'
 import Address from '../../components/users/Address'

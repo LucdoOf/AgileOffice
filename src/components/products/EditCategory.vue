@@ -47,13 +47,14 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['fetchCategories']),
+    ...mapActions(['fetchCategories', 'fetchProducts']),
     save () {
       const toSend = Object.assign({}, this.$data)
       toSend.parent_id = this.$refs.selector.category ? this.$refs.selector.category.id : 0
       this.$app.request('/categories/' + this.category.id + '/update', 'post', toSend).then(response => {
         this.$app.treatResponse(response, 'Catégorie ' + this.category.name)
         this.fetchCategories()
+        this.fetchProducts()
       })
     }
   },

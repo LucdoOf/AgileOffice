@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="box-title"><span class="title">Dernières ventes</span></div>
-    <Chart class="box-content" chart="area" :series="chartData" :height="height"/>
+    <Chart class="box-content" chart="area" :series="chartData"/>
   </div>
 </template>
 
@@ -9,19 +9,14 @@
 import Chart from '../Chart'
 
 export default {
-  name: 'ProductCommandsChart',
+  name: 'CategoryCommandsChart',
   components: { Chart },
-  props: {
-    product: { },
-    height: {
-      type: String,
-      default: 'auto'
-    }
-  },
+  props: ['category'],
   computed: {
     chartData () {
-      const chartData = [{ name: 'Produits "' + this.product.name + '" vendus', data: [] }]
-      const entries = this.$store.getters.getBasketEntriesContaining(this.product.id)
+      const chartData = [{ name: 'Produits de catégorie "' + this.category.name + '" vendus', data: [] }]
+      const entries = this.$store.getters.getBasketEntriesContainingCategory(this.category.id)
+      console.log(entries)
       const toAggregate = []
       for (let i = 0; i < entries.length; i++) {
         const entry = entries[i]

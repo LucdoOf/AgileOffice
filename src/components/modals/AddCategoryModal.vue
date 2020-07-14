@@ -36,7 +36,6 @@ export default {
         parent_id: this.$refs.selector.category ? this.$refs.selector.category.id : null,
         name: this.name
       }
-      console.log(this.$refs.selector)
       this.$app.request('/categories/create', 'put', data).then(response => {
         this.$emit('close')
         this.$app.treatResponse(response, 'Création de catégorie')
