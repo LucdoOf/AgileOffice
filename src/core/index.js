@@ -10,8 +10,7 @@ const App = Object.freeze({
     const connectedUser = store.getters.getConnectedUser
     const buffer = connectedUser ? Buffer.from(connectedUser.name + ':' + connectedUser.password) : null
     const config = {
-      url: 'http://localhost/Agile-Installations/Demo/share' +
-        '/api' + url,
+      url: process.env.VUE_APP_API_URL + url,
       method: method,
       validateStatus: function (status) {
         return status < 500
