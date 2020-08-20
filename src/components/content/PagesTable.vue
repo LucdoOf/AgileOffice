@@ -19,10 +19,10 @@
 
 <script>
 
-import Table from '../../components/Table'
+import Table from '../Table'
 
 export default {
-  name: 'Pages',
+  name: 'PagesTable',
   components: { Table }
 }
 

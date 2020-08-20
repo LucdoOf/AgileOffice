@@ -3,7 +3,8 @@ import { App } from '../../core'
 const state = {
   allUsers: [],
   paginatedUsers: [],
-  connectedUser: null
+  connectedUser: null,
+  visits: []
 }
 
 const getters = {
@@ -14,7 +15,8 @@ const getters = {
     }
   },
   getConnectedUser: (state) => state.connectedUser,
-  getUsers: (state) => state.allUsers
+  getUsers: (state) => state.allUsers,
+  getVisits: (state) => state.visits
 }
 
 const actions = {
@@ -34,13 +36,21 @@ const actions = {
   },
   setConnectedUser ({ commit }, user) {
     commit('setConnectedUser', user)
+  },
+  fetchVisits ({ commit }, { page, filters, sort }) {
+    return App.request('/visits/page/' + page, 'GET', { filters: filters, sort: sort }).then(response => {
+      if (App.treatResponse(response)) {
+        commit('setVisits', response.data)
+      }
+    })
   }
 }
 
 const mutations = {
   setPaginatedUsers: (state, users) => (state.paginatedUsers = users),
   setUsers: (state, users) => (state.allUsers = users),
-  setConnectedUser: (state, user) => (state.connectedUser = user)
+  setConnectedUser: (state, user) => (state.connectedUser = user),
+  setVisits: (state, visits) => (state.visits = visits)
 }
 
 export default {

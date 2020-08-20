@@ -7,6 +7,7 @@ import baskets from './modules/baskets'
 import basketEntries from './modules/basketEntries'
 import users from './modules/users'
 import pages from './modules/pages'
+import transactions from './modules/transactions'
 
 Vue.use(Vuex)
 
@@ -24,7 +25,8 @@ const store = new Vuex.Store({
     baskets,
     basketEntries,
     users,
-    pages
+    pages,
+    transactions
   }
 })
 

@@ -3,6 +3,8 @@
   box-sizing: border-box;
   flex-direction: row;
   margin-bottom: 20px;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .rw {
@@ -156,6 +158,9 @@ i, .badge {
     font-size: 1.2rem;
     &.xl {
       font-size: 1.7rem;
+    }
+    &.nowrap {
+      white-space: nowrap;
     }
     textarea, input, .multiselect {
       &:not([type="radio"]):not([type='checkbox']){

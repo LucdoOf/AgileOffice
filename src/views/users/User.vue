@@ -1,17 +1,20 @@
 <template>
   <div id="user">
     <div class="row">
-      <div class="w-s6">
+      <div class="col-12 col-lg-6">
         <div class="row">
-          <UserInformation class="w-s12 wr" :user="this.user"/>
+          <UserInformation class="col-12 wr" :user="this.user"/>
+        </div>
+        <div class="row">
+          <MailTable class="col-12 wr" :mails="this.user.sent_mails" :user_id="parseInt(this.user.id)" :target="this.user.mail"/>
         </div>
       </div>
-      <div class="w-s6">
+      <div class="col-12 col-lg-6">
         <div class="row">
-          <UserCommands class="w-s12 wr" :user="this.user"/>
+          <UserCommands class="col-12 wr" :user="this.user"/>
         </div>
         <div class="row">
-          <UserAddressTable class="w-s12 wr" :user="this.user"/>
+          <UserAddressTable class="col-12 wr" :user="this.user"/>
         </div>
       </div>
     </div>
@@ -23,10 +26,11 @@ import store from '../../store'
 import UserInformation from '../../components/users/UserInformation'
 import UserCommands from '../../components/users/UserCommands'
 import UserAddressTable from '../../components/users/UserAddressTable'
+import MailTable from '../../components/miscellaneous/MailTable'
 
 export default {
   name: 'User',
-  components: { UserAddressTable, UserCommands, UserInformation },
+  components: { MailTable, UserAddressTable, UserCommands, UserInformation },
   props: ['id'],
   computed: {
     user () {

@@ -7,17 +7,30 @@ input, textarea, select, [contenteditable="true"] {
   }
 }
 
-.multiselect__content-wrapper {
-  transition: 400ms width ease;
-  .multiselect__option--highlight {
-    color: initial !important;
-    background: $lightblue !important;
-    &.multiselect__option--selected {
-      background: $lightred !important;
-    }
+.input.xl {
+  padding: 10px 12px;
+  font-size: 1.2rem;
+}
+
+.multiselect {
+  .multiselect__tags {
+    white-space: nowrap;
   }
-  .multiselect__option--selected {
-    font-weight: initial !important;
-    background: $boxgray !important;
+  .multiselect__content-wrapper {
+    transition: 400ms width ease;
+
+    .multiselect__option--highlight {
+      color: initial !important;
+      background: $lightblue !important;
+
+      &.multiselect__option--selected {
+        background: $lightred !important;
+      }
+    }
+
+    .multiselect__option--selected {
+      font-weight: initial !important;
+      background: $boxgray !important;
+    }
   }
 }

@@ -1,9 +1,12 @@
 .vm--modal {
   padding: 30px;
+  max-height: 80% !important;
   height: auto !important;
   top: 50% !important;
-  transform: translateY(-50%);
+  left: 50% !important;
+  transform: translateY(-50%) translateX(-50%);
   overflow: visible !important;
+  overflow-y: auto !important;
 
   &.vue-dialog {
     .dialog-content {

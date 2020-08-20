@@ -1,13 +1,13 @@
 <template>
   <div id="users-stats">
     <div class="row">
-      <ActiveUsers class="w-s4"/>
-      <InactiveUsers class="w-s4"/>
-      <AverageUsersConnectionByDay class="w-s4"/>
+      <ActiveUsers class="col-12 col-lg-4"/>
+      <InactiveUsers class="col-12 col-lg-4"/>
+      <AverageUsersConnectionByDay class="col-12 col-lg-4"/>
     </div>
     <div class="row">
-      <UsersInscriptionsChart class="w-s6"/>
-      <UsersConnectionsChart class="w-s6"/>
+      <UsersInscriptionsChart class="col-12 col-lg-6"/>
+      <UsersConnectionsChart class="col-12 col-lg-6"/>
     </div>
   </div>
 </template>

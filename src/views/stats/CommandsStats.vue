@@ -1,17 +1,17 @@
 <template>
   <div id="commands-stats">
     <div class="row">
-      <div class="w-s6">
+      <div class="col-12 col-lg-6">
         <div class="row">
-          <AverageCommandsByDay class="w-s12 wr"/>
+          <AverageCommandsByDay class="col-12 wr"/>
         </div>
         <div class="row">
-          <CommandsChart class="w-s12 wr"/>
+          <CommandsChart class="col-12 wr"/>
         </div>
       </div>
-      <div class="w-s6">
+      <div class="col-12 col-lg-6">
         <div class="row">
-          <CommandsDayRepartitionChart class="w-s12 wr"/>
+          <CommandsDayRepartitionChart class="col-12 wr"/>
         </div>
       </div>
     </div>

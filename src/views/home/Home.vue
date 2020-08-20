@@ -1,16 +1,16 @@
 <template>
   <div id="home">
     <div class="row" id="main-numbers">
-      <OnlineUsers class="w-s4"/>
-      <TodayVisits class="w-s4"/>
-      <DurationTurnover class="w-s4"/>
+      <OnlineUsers class="col-12 col-lg-4"/>
+      <TodayVisits class="col-12 col-lg-4"/>
+      <DurationTurnover class="col-12 col-lg-4"/>
     </div>
     <div class="row">
-      <div class="w-s6 box">
+      <div class="col-12 col-lg-6 box">
         <div class="box-title"><span class="title">Produits vendus</span></div>
         <Chart chart="area" class="box-content" :series="productsChartData"/>
       </div>
-      <TurnoverChart class="w-s6"/>
+      <TurnoverChart class="col-12 col-lg-6"/>
     </div>
   </div>
 </template>

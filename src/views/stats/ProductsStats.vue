@@ -1,13 +1,13 @@
 <template>
   <div id="products-stats">
     <div class="row">
-      <TotalProductSells class="w-s4"/>
-      <AverageProductsByBasket class="w-s4"/>
-      <AverageProductsByBasket class="w-s4" :distinct="true"/>
+      <TotalProductSells class="col-12 col-lg-4"/>
+      <AverageProductsByBasket class="col-12 col-lg-4"/>
+      <AverageProductsByBasket class="col-12 col-lg-4" :distinct="true"/>
     </div>
     <div class="row">
-      <ProductSalesChart class="w-s6"/>
-      <ProductsRepartitionChart class="w-s6"/>
+      <ProductSalesChart class="col-12 col-lg-6"/>
+      <ProductsRepartitionChart class="col-12 col-lg-6"/>
     </div>
   </div>
 </template>

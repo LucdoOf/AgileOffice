@@ -1,11 +1,11 @@
 <template>
   <div id="global-stats">
     <div class="row">
-      <DurationTurnover class="w-s6"/>
-      <DurationTurnover class="w-s6" duration="month"/>
+      <DurationTurnover class="col-12 col-lg-6"/>
+      <DurationTurnover class="col-12 col-lg-6" duration="month"/>
     </div>
     <div class="row">
-      <TurnoverChart class="w-s6"/>
+      <TurnoverChart class="col-12 col-lg-6"/>
     </div>
   </div>
 </template>

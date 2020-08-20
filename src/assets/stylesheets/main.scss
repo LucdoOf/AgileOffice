@@ -1,3 +1,6 @@
+// Bootstrap
+@import "bootstrap/bootstrap-grid";
+
 @import "abstracts/variables";
 @import "abstracts/typography";
 @import "base/reset";
@@ -12,3 +15,4 @@
 @import "components/tables";
 @import "components/popovers";
 @import "components/badges";
+@import "components/images";

@@ -38,6 +38,7 @@ const App = Object.freeze({
     return response.status < 400
   },
   formatDate: function (entry) {
+    if (!entry || typeof entry === 'undefined') return '—'
     if (!(entry instanceof Date)) {
       if (typeof entry === 'number') {
         entry = new Date(entry * 1000)
@@ -115,7 +116,49 @@ const App = Object.freeze({
     if (entry) {
       return "<span style='color: " + entry.color + ";'><i class='" + entry.icon + " r'></i>" + entry.label + '</span>'
     }
-    return ''
+    return '&mdash;'
+  },
+  formatTransporter: function (transporter) {
+    if (transporter) {
+      return '<div class="value rw aw jw">' + transporter.name + ' (' + transporter.identifier + ')' +
+        '<img class="transporter-logo" src="' + require('@/assets/images/logos/' + transporter.identifier + '-logo.png') + '"/></div>'
+    } else {
+      return '<div class="value rw aw jw">Transporteur inconnu</div>'
+    }
+  },
+  getObjectDescriptionAndRoute: function (object) {
+    if (typeof object === 'undefined' || !object.type) return { description: '&mdash;', route: '404' }
+    switch (object.type) {
+      case 'command':
+        return { description: this.formatCommandStatus(object.status), route: '/commands/' + object.id, type: 'Commande' }
+      case 'user':
+        return { description: object.firstname + ' ' + object.lastname, route: '/users/' + object.id, type: 'Utilisateur' }
+      case 'product':
+        return { description: object.name, route: '/products/' + object.id, type: 'Produit' }
+    }
+  },
+  formatTransactionType: function (transactionType) {
+    switch (transactionType) {
+      case 'payment':
+        return '<span style="color: #2db644"><i class="fas fa-sign-in-alt r"></i>Entrée d\'argent</span>'
+      case 'refund':
+        return '<span style="color: #ea2020"><i class="fas fa-sign-out-alt"></i>Sortie d\'argent</span>'
+    }
+  },
+  allTransactionsStatus: function () {
+    return [
+      { label: 'Succès', value: 'success', icon: 'fas fa-check', color: '#2db644' },
+      { label: 'En attente de paiement', value: 'waiting', icon: 'fas fa-clock', color: 'rgb(213, 199, 0)' },
+      { label: 'Annulée', value: 'cancelled', icon: 'fas fa-ban', color: '#ea2020' },
+      { label: 'Erreur', value: 'error', icon: 'fas fa-exclamation-triangle', color: '#ea2020' }
+    ]
+  },
+  formatTransactionStatus: function (status) {
+    const entry = this.allTransactionsStatus().find(s => s.value === status)
+    if (entry) {
+      return "<span style='color: " + entry.color + ";'><i class='" + entry.icon + " r'></i>" + entry.label + '</span>'
+    }
+    return '&mdash;'
   }
 })
 

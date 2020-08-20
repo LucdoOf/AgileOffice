@@ -1,16 +1,16 @@
 <template>
   <div id="category">
     <div class="row">
-      <div class="w-s6">
+      <div class="col-12 col-lg-6">
         <div class="row">
-          <EditCategory class="w-s12 wr" :category="category"/>
+          <EditCategory class="col-12 wr" :category="category"/>
         </div>
         <div class="row">
-          <CategoryProductTable class="w-s12 wr" :category="category"/>
+          <CategoryProductTable class="col-12 wr" :category="category"/>
         </div>
       </div>
-      <div class="w-s6">
-        <CategoryCommandsChart class="w12" :category="category"/>
+      <div class="col-12 col-lg-6">
+        <CategoryCommandsChart class="col-12 wr" :category="category"/>
       </div>
     </div>
   </div>

@@ -17,7 +17,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="row in this.tableData" :key="row.id">
+            <tr v-for="row in this.tableData" :key="row.reference ? row.reference : row.id">
               <td
                 v-for="(col,index) in getRenderableColumns(row)"
                 :key="index+':'+col"

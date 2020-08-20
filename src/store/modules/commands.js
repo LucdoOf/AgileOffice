@@ -5,7 +5,8 @@ const state = {
   paginatedCommands: [],
   productCommands: [],
   todayCommands: [],
-  monthCommands: []
+  monthCommands: [],
+  availableTransporters: []
 }
 
 const getters = {
@@ -28,7 +29,8 @@ const getters = {
     return (basketId) => {
       return state.allCommands.find(command => command.basket_id === basketId)
     }
-  }
+  },
+  getAvailableTransporters: (state) => state.availableTransporters
 }
 
 const actions = {
@@ -62,9 +64,15 @@ const actions = {
   },
   fetchMonthCommands ({ commit }) {
     return App.request('/stats/commands/month').then(response => {
-      console.log(response)
       if (App.treatResponse(response)) {
         commit('setMonthCommands', response.data)
+      }
+    })
+  },
+  fetchAvailableTransporters ({ commit }) {
+    return App.request('/shipping/transporters').then(response => {
+      if (App.treatResponse(response)) {
+        commit('setAvailableTransporters', response.data)
       }
     })
   },
@@ -79,9 +87,6 @@ const actions = {
       App.treatResponse(response, 'Suppression de commande')
       return response
     })
-  },
-  setCommands ({ commit }, commands) {
-    commit('setCommands', commands)
   }
 }
 
@@ -90,7 +95,8 @@ const mutations = {
   setPaginatedCommands: (state, commands) => (state.paginatedCommands = commands),
   setProductCommands: (state, commands) => (state.productCommands = commands),
   setTodayCommands: (state, commands) => (state.todayCommands = commands),
-  setMonthCommands: (state, commands) => (state.monthCommands = commands)
+  setMonthCommands: (state, commands) => (state.monthCommands = commands),
+  setAvailableTransporters: (state, availableTransporters) => (state.availableTransporters = availableTransporters)
 }
 
 export default {

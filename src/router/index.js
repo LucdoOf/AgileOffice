@@ -21,6 +21,9 @@ import Content from '../views/content/Content'
 import Page from '../views/content/Page'
 import Categories from '../views/products/Categories'
 import Category from '../views/products/Category'
+import Transactions from '../views/transactions/Transactions'
+import Transaction from '../views/transactions/Transaction'
+import Visits from '../components/users/Visits'
 
 Vue.use(VueRouter)
 
@@ -126,6 +129,22 @@ const routes = [
         name: 'category',
         component: Category,
         props: true
+      },
+      {
+        path: 'transactions',
+        name: 'transactions',
+        component: Transactions
+      },
+      {
+        path: 'transactions/:id',
+        name: 'transaction',
+        component: Transaction,
+        props: true
+      },
+      {
+        path: 'users/visits',
+        name: 'visits',
+        component: Visits
       }
     ]
   },

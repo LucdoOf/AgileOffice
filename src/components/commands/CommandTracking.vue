@@ -8,7 +8,7 @@
         <div class="label">Transporteur</div>
         <div class="value rw aw jw">
           {{ command.transporter.name + ' (' + command.transporter.identifier + ')' }}
-          <img id="transporter-logo" :src="require('@/assets/images/logos/' + command.transporter.identifier + '-logo.png')"/>
+          <img class="transporter-logo" :src="require('@/assets/images/logos/' + command.transporter.identifier + '-logo.png')"/>
         </div>
       </div>
       <div class="field">
@@ -17,6 +17,10 @@
           <input type="text" placeholder="12345689" v-model="tracking_number" @keyup.enter="this.saveTrackingNumber"/>
           <i class="fas fa-save l green clickable" @click="this.saveTrackingNumber"/>
         </div>
+      </div>
+      <div class="field">
+        <div class="label">Frais de livraison</div>
+        <div class="value">{{ this.$app.parseDecimal(command.shipping_fees) }} €</div>
       </div>
     </div>
   </div>
@@ -43,11 +47,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  #transporter-logo {
-    height: 20px;
-    width: auto;
-    margin-left: 10px;
-  }
-</style>

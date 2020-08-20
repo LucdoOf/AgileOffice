@@ -69,6 +69,7 @@ export default {
   box-shadow: 0 2px 4px rgba(0,0,0,0.12);
 
   nav {
+    overflow-x: auto;
     height: 100%;
     width: 100%;
     ul {
@@ -87,6 +88,7 @@ export default {
       transition: 200ms background-color ease;
       line-height: 60px;
       padding: 0 30px;
+      white-space: nowrap;
       &:hover, &.router-link-exact-active {
         background-color: $colorhover;
         text-decoration: none;

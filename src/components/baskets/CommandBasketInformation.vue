@@ -1,7 +1,7 @@
 <template>
   <div class="box no-padding">
     <div class="box-title">
-      <span class="title"><slot>Articles</slot> (#{{ this.basket.id }})</span>
+      <span class="title"><slot>Articles</slot> (<router-link :to="'/commands/' + this.command.id" class="link">#{{ this.command.reference }}</router-link>)</span>
     </div>
     <div class="box-content">
       <Table

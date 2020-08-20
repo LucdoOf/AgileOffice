@@ -1,7 +1,7 @@
 <template>
   <div id="page">
     <div class="row">
-      <Translations class="w-s6" :initial-translations="this.getPageTranslations(this.page.slug)">Traductions {{ this.page.name }}</Translations>
+      <Translations class="col-12 col-lg-6" :initial-translations="this.getPageTranslations(this.page.slug)">Traductions {{ this.page.name }}</Translations>
     </div>
   </div>
 </template>

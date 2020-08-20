@@ -76,6 +76,10 @@ const state = {
           else return user.reference
         },
         allowedRoutes: ['user']
+      },
+      {
+        display: 'Visites',
+        name: 'visits'
       }
     ],
     stats: [
@@ -109,6 +113,21 @@ const state = {
           else return page.name
         },
         allowedRoutes: ['page']
+      }
+    ],
+    transactions: [
+      {
+        display: 'Toutes les transactions',
+        name: 'transactions'
+      },
+      {
+        name: 'transaction',
+        display (params) {
+          const transaction = this.$store.getters.getActualTransaction
+          if (!transaction) return false
+          else return transaction.reference
+        },
+        allowedRoutes: ['transaction']
       }
     ]
   }

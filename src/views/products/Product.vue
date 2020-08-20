@@ -1,15 +1,15 @@
 <template>
   <div id="product">
     <div class="row">
-      <div class="w-s6">
+      <div class="col-12 col-lg-6">
         <EditProduct :product="this.product" ref="editProduct"/>
       </div>
-      <div class="w-s6">
+      <div class="col-12 col-lg-6">
         <ProductCommandsChart :product="this.product" :height="chartHeight"/>
       </div>
     </div>
     <div class="row">
-      <ProductMedias class="w-s6" :product="this.product"/>
+      <ProductMedias class="col-12 col-lg-6" :product="this.product"/>
     </div>
   </div>
 </template>

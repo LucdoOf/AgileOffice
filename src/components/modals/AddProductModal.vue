@@ -49,9 +49,10 @@ export default {
       const toSend = Object.assign({}, this.$data)
       toSend.category_id = this.$refs.selector.category ? this.$refs.selector.category.id : null
       this.$app.request('/products/create', 'put', toSend).then(response => {
-        this.$emit('close')
-        this.$app.treatResponse(response, 'Création de produit')
-        this.fetchProducts()
+        if (this.$app.treatResponse(response, 'Création de produit')) {
+          this.$emit('close')
+          this.fetchProducts()
+        }
       })
     }
   }

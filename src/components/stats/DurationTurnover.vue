@@ -3,7 +3,7 @@
     <div class="box-content">
     <div class="field">
         <div class="label nowrap">Chiffre d'affaire {{ this.duration === 'today' ? "d'aujoud'hui" : ' du mois' }}</div>
-        <div class="value xl">{{ this.$app.parseDecimal(todayTurnover) }} € TTC</div>
+        <div class="value xl nowrap">{{ this.$app.parseDecimal(todayTurnover) }} € TTC</div>
       </div>
     </div>
   </div>

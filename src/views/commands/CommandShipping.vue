@@ -1,8 +1,8 @@
 <template>
   <div id="command-shipping">
     <div class="row">
-      <Address class="w-s4" :address="this.command.shipping_address">Adresse de livraison</Address>
-      <CommandTracking class="w-s8" :command="this.command"/>
+      <Address class="col-12 col-lg-4" :address="this.command.shipping_address">Adresse de livraison</Address>
+      <CommandTracking class="col-12 col-lg-8" :command="this.command"/>
     </div>
   </div>
 </template>
