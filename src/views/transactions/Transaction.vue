@@ -39,11 +39,7 @@ export default {
   },
   beforeRouteEnter (to, from, next) {
     store.dispatch('fetchTransaction', { id: to.params.id ?? -1 }).finally(() => {
-      store.dispatch('fetchBasketEntries').finally(() => {
-        store.dispatch('fetchProducts').finally(() => {
-          next()
-        })
-      })
+      next()
     })
   }
 }
