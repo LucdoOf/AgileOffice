@@ -6,7 +6,8 @@ const state = {
   productCommands: [],
   todayCommands: [],
   monthCommands: [],
-  availableTransporters: []
+  availableTransporters: [],
+  actualCommand: null
 }
 
 const getters = {
@@ -30,7 +31,8 @@ const getters = {
       return state.allCommands.find(command => command.basket_id === basketId)
     }
   },
-  getAvailableTransporters: (state) => state.availableTransporters
+  getAvailableTransporters: (state) => state.availableTransporters,
+  getActualCommand: (state) => state.actualCommand
 }
 
 const actions = {
@@ -48,7 +50,7 @@ const actions = {
       }
     })
   },
-  fetchProductCommands ({ commit }, { productId, page, filters, sort }) {
+  fetchProductPaginatedCommands ({ commit }, { productId, page, filters, sort }) {
     return App.request('/products/' + productId + '/commands/page/' + page, 'get', { filters: filters, sort: sort }).then(response => {
       if (App.treatResponse(response)) {
         commit('setProductCommands', response.data)
@@ -87,6 +89,13 @@ const actions = {
       App.treatResponse(response, 'Suppression de commande')
       return response
     })
+  },
+  fetchCommand ({ commit }, { id }) {
+    return App.request('/commands/' + id).then(response => {
+      if (App.treatResponse(response)) {
+        commit('setActualCommand', response.data)
+      }
+    })
   }
 }
 
@@ -96,7 +105,8 @@ const mutations = {
   setProductCommands: (state, commands) => (state.productCommands = commands),
   setTodayCommands: (state, commands) => (state.todayCommands = commands),
   setMonthCommands: (state, commands) => (state.monthCommands = commands),
-  setAvailableTransporters: (state, availableTransporters) => (state.availableTransporters = availableTransporters)
+  setAvailableTransporters: (state, availableTransporters) => (state.availableTransporters = availableTransporters),
+  setActualCommand: (state, command) => (state.actualCommand = command)
 }
 
 export default {

@@ -18,10 +18,10 @@ export default {
   components: { Table },
   props: ['product'],
   methods: {
-    ...mapActions(['fetchProductCommands']),
+    ...mapActions(['fetchProductPaginatedCommands']),
     updateCommands () {
       const sortKey = this.$refs.table.finalSortKey ? (this.$refs.table.finalSortKey + (this.$refs.table.sortInverted ? ' DESC' : ' ASC')) : null
-      this.fetchProductCommands({ productId: this.product.id, page: this.$refs.table.page, sort: sortKey })
+      this.fetchProductPaginatedCommands({ productId: this.product.id, page: this.$refs.table.page, sort: sortKey })
     }
   },
   computed: {

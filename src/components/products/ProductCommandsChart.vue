@@ -21,16 +21,20 @@ export default {
   computed: {
     chartData () {
       const chartData = [{ name: 'Produits "' + this.product.name + '" vendus', data: [] }]
-      const entries = this.$store.getters.getBasketEntriesContaining(this.product.id)
+      const commands = this.$store.getters.getActualProductCommands
       const toAggregate = []
-      for (let i = 0; i < entries.length; i++) {
-        const entry = entries[i]
-        const command = this.$store.getters.getBasketCommand(entry.basket_id)
+      for (let i = 0; i < commands.length; i++) {
+        const command = commands[i]
         if (command) {
-          toAggregate.push({
-            order_date: command.order_date_stamp * 1000,
-            quantity: entry.quantity
-          })
+          for (let j = 0; j < command.basket.entries.length; j++) {
+            const entry = command.basket.entries[j]
+            if (entry && parseInt(entry.product_id) === parseInt(this.$store.getters.getActualProduct.id)) {
+              toAggregate.push({
+                order_date: command.order_date_stamp * 1000,
+                quantity: entry.quantity
+              })
+            }
+          }
         }
       }
       const aggregatedData = this.$app.aggregatePerDay(toAggregate, 'order_date', 'quantity')

@@ -4,7 +4,9 @@ const state = {
   allUsers: [],
   paginatedUsers: [],
   connectedUser: null,
-  visits: []
+  visits: [],
+  actualUser: null,
+  actualUserCommands: []
 }
 
 const getters = {
@@ -16,7 +18,9 @@ const getters = {
   },
   getConnectedUser: (state) => state.connectedUser,
   getUsers: (state) => state.allUsers,
-  getVisits: (state) => state.visits
+  getVisits: (state) => state.visits,
+  getActualUser: (state) => state.actualUser,
+  getActualUserCommands: (state) => state.actualUserCommands
 }
 
 const actions = {
@@ -43,6 +47,20 @@ const actions = {
         commit('setVisits', response.data)
       }
     })
+  },
+  fetchUser ({ commit }, { id }) {
+    return App.request('/users/' + id).then(response => {
+      if (App.treatResponse(response)) {
+        commit('setActualUser', response.data)
+      }
+    })
+  },
+  fetchUserCommands ({ commit }, { id }) {
+    return App.request('/users/' + id + '/commands').then(response => {
+      if (App.treatResponse(response)) {
+        commit('setActualUserCommands', response.data)
+      }
+    })
   }
 }
 
@@ -50,7 +68,9 @@ const mutations = {
   setPaginatedUsers: (state, users) => (state.paginatedUsers = users),
   setUsers: (state, users) => (state.allUsers = users),
   setConnectedUser: (state, user) => (state.connectedUser = user),
-  setVisits: (state, visits) => (state.visits = visits)
+  setVisits: (state, visits) => (state.visits = visits),
+  setActualUser: (state, user) => (state.actualUser = user),
+  setActualUserCommands: (state, commands) => (state.actualUserCommands = commands)
 }
 
 export default {

@@ -24,9 +24,8 @@ export default {
   name: 'UsersStats',
   components: { AverageUsersConnectionByDay, ActiveUsers, UsersConnectionsChart, InactiveUsers, UsersInscriptionsChart },
   beforeRouteEnter (to, from, next) {
-    store.dispatch('fetchUsers').finally(() => {
-      next()
-    })
+    store.dispatch('fetchUsers')
+    next()
   }
 }
 </script>

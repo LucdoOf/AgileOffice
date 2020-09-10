@@ -30,17 +30,15 @@ export default {
   },
   computed: {
     product () {
-      return this.$store.getters.getProduct(this.id)
+      return this.$store.getters.getActualProduct
     }
   },
   props: ['id'],
   beforeRouteEnter (to, from, next) {
-    store.dispatch('fetchProducts').finally(() => {
-      store.dispatch('fetchCommands').finally(() => {
-        store.dispatch('fetchBasketEntries').finally(() => {
-          store.dispatch('fetchCategories').finally(() => {
-            next()
-          })
+    store.dispatch('fetchProduct', to.params).finally(() => {
+      store.dispatch('fetchProductCommands', to.params).finally(() => {
+        store.dispatch('fetchCategories').finally(() => {
+          next()
         })
       })
     })

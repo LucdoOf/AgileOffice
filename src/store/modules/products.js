@@ -2,7 +2,9 @@ import { App } from '../../core'
 
 const state = {
   products: [],
-  categories: []
+  categories: [],
+  actualProduct: null,
+  actualProductCommands: []
 }
 
 const getters = {
@@ -27,7 +29,9 @@ const getters = {
         return false
       })
     }
-  }
+  },
+  getActualProduct: (state) => state.actualProduct,
+  getActualProductCommands: (state) => state.actualProductCommands
 }
 
 const actions = {
@@ -50,12 +54,28 @@ const actions = {
   },
   setCategories ({ commit }, categories) {
     commit('setCategories', categories)
+  },
+  fetchProduct ({ commit }, { id }) {
+    return App.request('/products/' + id).then(response => {
+      if (App.treatResponse(response)) {
+        commit('setActualProduct', response.data)
+      }
+    })
+  },
+  fetchProductCommands ({ commit }, { id }) {
+    return App.request('/stats/products/' + id + '/commands').then(response => {
+      if (App.treatResponse(response)) {
+        commit('setActualProductCommands', response.data)
+      }
+    })
   }
 }
 
 const mutations = {
   setProducts: (state, commands) => (state.products = commands),
-  setCategories: (state, categories) => (state.categories = categories)
+  setCategories: (state, categories) => (state.categories = categories),
+  setActualProduct: (state, product) => (state.actualProduct = product),
+  setActualProductCommands: (state, commands) => (state.actualProductCommands = commands)
 }
 
 export default {

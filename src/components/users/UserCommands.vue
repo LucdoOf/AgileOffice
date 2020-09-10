@@ -18,7 +18,7 @@ export default {
   props: ['user'],
   methods: {
     getFormatedCommands: function () {
-      const commands = this.getCommandsFromUser(this.user.id)
+      const commands = this.getActualUserCommands
       const formatedCommands = []
       for (let i = 0; i < commands.length; i++) {
         const command = Object.assign({}, commands[i])

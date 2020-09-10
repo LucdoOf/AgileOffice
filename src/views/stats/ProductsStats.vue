@@ -24,10 +24,9 @@ export default {
   components: { AverageProductsByBasket, TotalProductSells, ProductSalesChart, ProductsRepartitionChart },
   beforeRouteEnter (to, from, next) {
     store.dispatch('fetchCommands').finally(() => {
-      store.dispatch('fetchProducts').finally(() => {
-        next()
-      })
+      store.dispatch('fetchProducts')
     })
+    next()
   }
 }
 </script>

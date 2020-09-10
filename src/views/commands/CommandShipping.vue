@@ -18,11 +18,11 @@ export default {
   props: ['id'],
   computed: {
     command () {
-      return this.$store.getters.getCommand(this.id)
+      return this.$store.getters.getActualCommand
     }
   },
   beforeRouteEnter (to, from, next) {
-    store.dispatch('fetchCommands').finally(() => {
+    store.dispatch('fetchCommand', to.params).finally(() => {
       next()
     })
   }

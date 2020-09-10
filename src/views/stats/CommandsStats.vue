@@ -27,9 +27,8 @@ export default {
   name: 'CommandsStats',
   components: { CommandsDayRepartitionChart, AverageCommandsByDay, CommandsChart },
   beforeRouteEnter (to, from, next) {
-    store.dispatch('fetchCommands').finally(() => {
-      next()
-    })
+    store.dispatch('fetchCommands')
+    next()
   }
 }
 </script>

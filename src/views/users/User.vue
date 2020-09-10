@@ -34,12 +34,12 @@ export default {
   props: ['id'],
   computed: {
     user () {
-      return this.$store.getters.getUser(this.id)
+      return this.$store.getters.getActualUser
     }
   },
   beforeRouteEnter (to, from, next) {
-    store.dispatch('fetchUsers').finally(() => {
-      store.dispatch('fetchCommands').finally(() => {
+    store.dispatch('fetchUser', to.params).finally(() => {
+      store.dispatch('fetchUserCommands', to.params).finally(() => {
         next()
       })
     })

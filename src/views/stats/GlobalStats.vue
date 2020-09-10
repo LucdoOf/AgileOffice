@@ -20,11 +20,10 @@ export default {
   beforeRouteEnter (to, from, next) {
     store.dispatch('fetchCommands').finally(() => {
       store.dispatch('fetchTodayCommands').finally(() => {
-        store.dispatch('fetchMonthCommands').finally(() => {
-          next()
-        })
+        store.dispatch('fetchMonthCommands')
       })
     })
+    next()
   }
 }
 </script>

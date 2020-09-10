@@ -18,7 +18,7 @@ const state = {
       {
         name: 'command',
         display (params) {
-          const command = this.$store.getters.getCommand(params.id)
+          const command = this.$store.getters.getActualCommand
           if (!command) return false
           else return command.reference
         },
@@ -51,7 +51,7 @@ const state = {
       {
         name: 'product',
         display (params) {
-          const product = this.$store.getters.getProduct(params.id)
+          const product = this.$store.getters.getActualProduct
           if (!product) return false
           else return product.reference
         },
@@ -71,7 +71,7 @@ const state = {
       {
         name: 'user',
         display (params) {
-          const user = this.$store.getters.getUser(params.id)
+          const user = this.$store.getters.getActualUser
           if (!user) return false
           else return user.reference
         },

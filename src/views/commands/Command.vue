@@ -1,7 +1,7 @@
 <template>
   <div id="command">
     <div class="row">
-      <BasketInformation :command="this.command" :basket="this.basket" class="col-12">Panier lié</BasketInformation>
+      <BasketInformation :command="this.command" class="col-12">Panier lié</BasketInformation>
     </div>
     <div class="row">
       <div class="col-12 col-xl-8">
@@ -42,21 +42,12 @@ export default {
   props: ['id'],
   computed: {
     command () {
-      return this.$store.getters.getCommand(this.id)
-    },
-    basket () {
-      return this.$store.getters.getBasket(this.command.basket_id)
+      return this.$store.getters.getActualCommand
     }
   },
   beforeRouteEnter (to, from, next) {
-    store.dispatch('fetchCommands').finally(() => {
-      store.dispatch('fetchBaskets').finally(() => {
-        store.dispatch('fetchBasketEntries').finally(() => {
-          store.dispatch('fetchProducts').finally(() => {
-            next()
-          })
-        })
-      })
+    store.dispatch('fetchCommand', to.params).finally(() => {
+      next()
     })
   }
 }

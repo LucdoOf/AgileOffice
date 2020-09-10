@@ -40,14 +40,14 @@ import Table from '../Table'
 export default {
   name: 'CommandBasketInformation',
   components: { Table },
-  props: ['basket', 'command'],
+  props: ['command'],
   methods: {
     getFormatedEntries () {
-      const entries = this.getBasketEntries(this.basket.id)
+      const entries = this.command.basket.entries
       const toReturn = []
       for (const entryId in entries) {
         const entry = entries[entryId]
-        const product = this.getProduct(entry.product_id)
+        const product = entry.product
         toReturn.push({
           id: entry.id,
           product_id: product.id,
@@ -63,7 +63,7 @@ export default {
   },
   computed: {
     basketPrice () {
-      return this.getBasketEntries(this.basket.id).reduce((total, obj) => parseFloat(obj.entry_price) + total, 0)
+      return this.command.basket.entries.reduce((total, obj) => parseFloat(obj.entry_price) + total, 0)
     }
   }
 }
