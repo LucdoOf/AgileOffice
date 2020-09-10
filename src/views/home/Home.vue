@@ -61,10 +61,9 @@ export default {
   },
   beforeRouteEnter (to, from, next) {
     store.dispatch('fetchCommands').finally(() => {
-      store.dispatch('fetchTodayCommands').finally(() => {
-        next()
-      })
+      store.dispatch('fetchTodayCommands')
     })
+    next()
   }
 }
 
